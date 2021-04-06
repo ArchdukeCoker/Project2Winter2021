@@ -239,7 +239,7 @@ def get_sites_for_state(state_url):
             national_site_collector.append(state_nat_site_inst)
 
         print('--------------------------------------------------------------------------------')
-        print(f'List of National Sites in {key_coll[0]}') # figure out how to get the state names in the cache as well, might have to get a get state name function
+        print(f'List of National Sites in {key_coll[0]}')
         print('--------------------------------------------------------------------------------')
         i = 1
         for x in national_site_collector:
@@ -276,7 +276,7 @@ def get_sites_for_state(state_url):
 
 
         print('--------------------------------------------------------------------------------')
-        print(f'List of National Sites in {state_name}') # figure out how to get the state names in the cache as well, might have to get a get state name function
+        print(f'List of National Sites in {state_name}')
         print('--------------------------------------------------------------------------------')
         i = 1
         for x in national_site_collector:
@@ -333,7 +333,7 @@ def get_nearby_places(site_object):
                 continue
 
         print('--------------------------------------------------------------------------------')
-        print(f'Places near {national_place_name}') # figure out how to get the state names in the cache as well, might have to get a get state name function
+        print(f'Places near {national_place_name}')
         print('--------------------------------------------------------------------------------')
         for x in place_inst_coll:
             print(x.info())
@@ -370,7 +370,7 @@ def get_nearby_places(site_object):
                 continue
 
         print('--------------------------------------------------------------------------------')
-        print(f'Places near {national_place_name}') # figure out how to get the state names in the cache as well, might have to get a get state name function
+        print(f'Places near {national_place_name}')
         print('--------------------------------------------------------------------------------')
         for x in place_inst_coll:
             print(x.info())
@@ -464,17 +464,19 @@ def main():
                             get_nearby_places(site_inst[index])
                             try:
                                 print('')
-                                print('Choose the number for detail or search "exit" or "back"') #fix this bit i think just enter exit to finish or back to return to the last level
+                                print('Type "back" to return to the state national sites or "exit" if you are finished')
                                 input2 = input(':')
                                 if input2.lower() == 'exit':
                                     break
-                                elif input2.lower() == 'break':
-                                    continue
-                                else:
-                                    print('[Error] Invalid input')
-                                    print('--------------------------------------------------------------------------------')
+                                elif input2.lower() == 'back':
                                     time.sleep(1)
                                     print('')
+                                    continue
+                                else:
+                                    print('')
+                                    print('[Error] Invalid input, returning to state National site instance')
+                                    print('--------------------------------------------------------------------------------')
+                                    time.sleep(1)
                                 continue
                             except:
                                 print('[Error] Invalid input')
@@ -493,6 +495,8 @@ def main():
                             (print('Bye!'))
                             break
                         elif input2 =='back':
+                            time.sleep(1)
+                            print('')
                             print('Enter a state name (e.g. Michigan or michigan) or "exit"')
                             input1 = input(':').lower()
                         else:
